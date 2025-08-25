@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Control</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="topbar"><div class="wrap"><div class="brand">control</div><nav><a href="hub.html">hub</a><a href="gallery.html">gallery</a><a id="logout" href="#">logout</a></nav></div></header>
+  <main class="wrap">
+    <h1>Admin</h1>
+    <section>
+      <h2>Articles</h2>
+      <div id="admin-articles"></div>
+      <h3>Create / Edit</h3>
+      <input id="art-id" type="hidden">
+      <input id="art-slug" placeholder="slug (no spaces)"><br>
+      <input id="art-title" placeholder="title"><br>
+      <select id="art-type"><option value="log">log</option><option value="report">report</option><option value="secret">secret</option><option value="generic">generic</option></select>
+      <input id="art-ordern" placeholder="order" style="width:80px"><br>
+      <textarea id="art-content" placeholder="html content" style="width:100%;height:160px"></textarea><br>
+      <button onclick="adminSaveArticle()">save article</button>
+    </section>
+
+    <section>
+      <h2>Images</h2>
+      <div id="admin-images"></div>
+    </section>
+
+    <section>
+      <h2>Users</h2>
+      <div id="admin-users"></div>
+      <h3>Logs</h3>
+      <button onclick="fetchAdminLogs()">refresh logs</button>
+      <pre id="logOutput" class="logbox">no logs</pre>
+    </section>
+  </main>
+  <script src="js/main.js"></script>
+</body>
+</html>

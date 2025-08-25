@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Vault</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="topbar"><div class="wrap"><div class="brand">vault</div><nav><a href="hub.html">hub</a><a href="#" id="logout">logout</a></nav></div></header>
+  <main class="wrap">
+    <h1>Archive Vault</h1>
+    <p>Enter the final phrase:</p>
+    <input id="vaultpass" placeholder="enter phrase"><br>
+    <button onclick="tryVault()">unlock</button>
+    <div id="vaultContent" style="display:none;margin-top:12px;">
+      <h2>Vault content</h2>
+      <img src="/images/vault_final.png" style="max-width:100%">
+      <p class="muted">This is the end.</p>
+    </div>
+    <p id="vaultMsg" class="warning"></p>
+  </main>
+  <script>
+    function tryVault(){
+      const val = document.getElementById("vaultpass").value || "";
+      fetch("/api/vault_check?password="+encodeURIComponent(val)).then(r=>r.json()).then(d=>{
+        if (d.success) {
+          document.getElementById("vaultContent").style.display = "block";
+          document.getElementById("vaultMsg").innerText = "";
+        } else {
+          document.getElementById("vaultMsg").innerText = "nope";
+        }
+      });
+    }
+  </script>
+</body>
+</html>

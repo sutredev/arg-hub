@@ -1,0 +1,38 @@
+/* Minimal functional theme (we'll add creep later) */
+:root { --bg:#0f0f10; --fg:#e7e7ea; --muted:#9aa; --card:#17171a; --acc:#b3b3ff; }
+* { box-sizing: border-box; }
+html, body { margin:0; padding:0; background:var(--bg); color:var(--fg); font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+a { color: var(--acc); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.topbar { background:#111; border-bottom:1px solid #222; position:sticky; top:0; }
+.wrap { max-width: 960px; margin: 0 auto; padding: 16px; }
+.brand { font-weight:700; letter-spacing:.5px; }
+.container.center { min-height: 100vh; display:flex; align-items:center; justify-content:center; }
+.card { background: var(--card); padding: 20px; border-radius: 12px; box-shadow: 0 8px 30px rgba(0,0,0,.3); }
+.card.narrow { width: 100%; max-width: 420px; }
+input { width: 100%; padding: 10px 12px; margin: 8px 0; border-radius: 8px; border: 1px solid #2b2b2f; background:#0c0c0f; color:var(--fg); }
+button { width: 100%; padding: 10px 12px; margin-top: 8px; border-radius: 8px; border:0; background:#2b2bff; color:white; cursor:pointer; }
+button:hover { filter:brightness(1.1); }
+.muted { color: var(--muted); }
+.warning { color: #ff9898; }
+.list { display:grid; gap:12px; }
+.post-item { padding:12px; border:1px solid #222; border-radius:10px; background:#121216; display:flex; justify-content:space-between; align-items:center; }
+.grid { display:grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap:12px; }
+.thumb { width:100%; aspect-ratio: 1/1; object-fit: cover; border-radius:12px; border:1px solid #222; background:#0c0c10; }
+.thumb-wrap { position:relative; }
+.hidden { opacity:.08; transition:.2s; }
+.hidden:hover { opacity:1; }
+.logbox { background:#0c0c10; border:1px solid #222; padding:12px; border-radius:10px; overflow:auto; max-height:70vh; }
+.secret { margin-top:12px; border-top:1px dashed #333; padding-top:12px; }
+
+
+/* Decay styles */
+body.decay { transition: filter 0.6s ease; }
+body.decay .post-item { transform-origin: left top; }
+.thumb.glitch-clone { z-index: 30; pointer-events: none; border: 1px solid rgba(255,255,255,0.03); border-radius:12px; }
+
+
+/* stronger decay visuals */
+body.decay-active h1, body.decay-active h2 { transition: opacity 0.2s; }
+body.decay-active p { transition: opacity 0.4s; }
+.thumb.glitch-clone { mix-blend-mode: screen; transform: rotate(0.5deg); }
